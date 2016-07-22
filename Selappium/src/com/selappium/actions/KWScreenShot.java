@@ -1,4 +1,4 @@
-package com.selenium.actions;
+package com.selappium.actions;
 
 public class KWScreenShot {
 
