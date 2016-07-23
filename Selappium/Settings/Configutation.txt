@@ -4,18 +4,16 @@
 
 Browser Configuration
 ------------------------------------------------------------------------------------
-URL = 
+URL = "www.google.com"
 
 ------------------------------------------------------------------------------------
 
 Mobile app Configuration
 ------------------------------------------------------------------------------------
-APKPATH = 
-IPAPATH = 
+APKPATH = "/Users/ELANGO/git/Selappium/Selappium/Settings/Configutation.txt"
+IPAPATH = "/Users/ELANGO/git/Selappium/Selappium/Settings"
 
-DEVICEID = 
-UDID = 
+DEVICEID = 892838,809239,8029320
+UDID = 030929302902IHSDH,239829KJKJKJA
 
 ------------------------------------------------------------------------------------
-
-
