@@ -1,5 +1,6 @@
 package com.selappium.initialize;
 
-public class StopAppiumServer {
+public class StopAppiumServer {}
 
-}
+
+//~ Formatted by Jindent --- http://www.jindent.com

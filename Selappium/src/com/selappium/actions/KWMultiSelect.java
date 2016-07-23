@@ -1,5 +1,6 @@
 package com.selappium.actions;
 
-public class KWMultiSelect {
+public class KWMultiSelect {}
 
-}
+
+//~ Formatted by Jindent --- http://www.jindent.com
