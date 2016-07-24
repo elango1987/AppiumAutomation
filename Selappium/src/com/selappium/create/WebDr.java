@@ -1,6 +1,6 @@
 package com.selappium.create;
 
-public class WebDriver {}
+public class WebDr {}
 
 
 //~ Formatted by Jindent --- http://www.jindent.com
