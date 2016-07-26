@@ -5,7 +5,6 @@ import java.io.FileReader;
 
 /**
  * @author ELANGO
- *
  */
 public class TextReader {
     private static String filePath;
@@ -14,6 +13,7 @@ public class TextReader {
     private static String ipaPath;
     private static String deviceId;
     private static String udid;
+    private static String chromeDriverPath;
 
     public TextReader(String configFilePath) {
         filePath = configFilePath;
@@ -22,9 +22,9 @@ public class TextReader {
 
     public static void ReadConfigFile() {
         try {
-            FileReader     reader         = new FileReader(filePath);
+            FileReader reader = new FileReader(filePath);
             BufferedReader bufferedReader = new BufferedReader(reader);
-            String         line;
+            String line;
 
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.startsWith("#")) {
@@ -42,6 +42,9 @@ public class TextReader {
                         deviceId = splitString(line);
                     } else if (line.startsWith("UDID")) {
                         udid = splitString(line);
+                    }else if(line.startsWith("CHROMEDRIVERPATH")){
+                        chromeDriverPath = splitString(line);
+
                     }
                 }
             }
@@ -55,7 +58,6 @@ public class TextReader {
 
     private static String splitString(String value) {
         String[] newValue = value.split("=");
-
         return newValue[1];
     }
 
@@ -78,7 +80,6 @@ public class TextReader {
     public String getURL() {
         return TextReader.url;
     }
+
+    public String getChromeDriverPath(){return TextReader.chromeDriverPath;}
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

@@ -4,14 +4,16 @@
 
 Browser Configuration
 ------------------------------------------------------------------------------------
-URL = "www.google.com"
+URL = https://www.google.com/
+
+CHROMEDRIVERPATH = "/Users/ELANGO/IdeaProjects/AppiumAutomation/Selappium/External Files/chromedriver"
 
 ------------------------------------------------------------------------------------
 
 Mobile app Configuration
 ------------------------------------------------------------------------------------
-APKPATH = "/Users/ELANGO/git/Selappium/Selappium/Settings/Configutation.txt"
-IPAPATH = "/Users/ELANGO/git/Selappium/Selappium/Settings"
+APKPATH = /Users/ELANGO/git/Selappium/Selappium/Settings/Configuration.txt
+IPAPATH = /Users/ELANGO/git/Selappium/Selappium/Settings
 
 DEVICEID = 892838,809239,8029320
 UDID = 030929302902IHSDH,239829KJKJKJA

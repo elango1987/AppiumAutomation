@@ -2,10 +2,13 @@ package com.selappium.driver;
 
 import java.io.File;
 
+import com.selappium.create.WebDr;
 import com.selappium.utility.TextReader;
 
 public class Driver {
     static TextReader txtReader;
+    static WebDr webDriver;
+    static File configFile;
 
     public static void main(String[] args) {
 
@@ -15,21 +18,17 @@ public class Driver {
             System.exit(-1);
         }
 
-        File configFile = new File(args[0]);
+        configFile = new File(args[0]);
 
         if (!configFile.exists()) {
             System.err.println("Configuration file not found in" + configFile.getAbsolutePath() + ". Please check");
             System.exit(-1);
         } else {
             txtReader = new TextReader(args[0]);
-            System.out.println(txtReader.getURL());
-            System.out.println(txtReader.getApkPath());
-            System.out.println(txtReader.getIpaPath());
-            System.out.println(txtReader.getDeviceId());
-            System.out.println(txtReader.getUDID());
+
+            webDriver = new WebDr();
+            webDriver.CreateWebDriver("Firefox");
+            webDriver.OpenUrl(txtReader.getURL());
         }
     }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com
