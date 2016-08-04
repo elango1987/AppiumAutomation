@@ -1,5 +1,6 @@
 package com.selappium.create;
 
+import com.selappium.utility.PropertyReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +12,7 @@ public class WebDr {
 
     WebDriver webDriver = null;
     DesiredCapabilities capability = null;
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    PropertyReader propReader = PropertyReader.getInstance();
 
     /**
      * Function CreateWebDriver
@@ -23,13 +24,16 @@ public class WebDr {
 
             capability = DesiredCapabilities.firefox();
             capability.setBrowserName("firefox");
+
             webDriver = new FirefoxDriver();
 
         } else if (browserName.toUpperCase().equals("CHROME")) {
 
             System.setProperty("webdriver.chrome.driver", "/Users/ELANGO/IdeaProjects/AppiumAutomation/Selappium/External Files/chromedriver");
+//            System.setProperty("webdriver.chrome.driver", propReader.getChromeDriverPath());
             capability = DesiredCapabilities.chrome();
             capability.setBrowserName("chrome");
+
             webDriver = new ChromeDriver();
             MaximizeChromeWindow();
 
@@ -59,18 +63,19 @@ public class WebDr {
      * Used to close the web driver
      */
     public void CloseWebDriver() {
-        webDriver.quit();
         webDriver.close();
+        webDriver.quit();
     }
 
     /**END FUNCTION**********************************************************************************************/
 
     /**
      * Function MaximizeChromeWindow
-     * Method to Maximize Chrome window based on OS type
+     * Method to Maximize Chrome window to fit the screen size
      */
     private void MaximizeChromeWindow() {
 
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
 
