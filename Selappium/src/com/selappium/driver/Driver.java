@@ -1,16 +1,19 @@
 package com.selappium.driver;
 
+import com.selappium.actions.KWOpenBrowser;
+import com.selappium.actions.KWSetText;
 import com.selappium.create.WebDr;
-import com.selappium.utility.TextReader;
+import com.selappium.pageobjects.CreateGAPO;
 import com.selappium.utility.PropertyReader;
 
 import java.io.File;
 
 public class Driver {
-    static TextReader txtReader;
+
     static WebDr webDriver;
-    static File configFile;
+    public static File configFile;
     static PropertyReader propReader;
+
 
     public static void main(String[] args) {
 
@@ -27,26 +30,33 @@ public class Driver {
             System.exit(-1);
         } else {
 
-           /* txtReader = new TextReader(args[0]);
-            webDriver = new WebDr();
-            webDriver.CreateWebDriver("chrome");
-            webDriver.OpenUrl(txtReader.getURL());*/
-
-            propReader = new PropertyReader(args[0]);
             propReader = PropertyReader.getInstance();
 
-            System.out.println(propReader.getUrl());
-            System.out.println(propReader.getApkPath());
-            System.out.println(propReader.getIpaPath());
-            System.out.println(propReader.getDeviceId());
-            System.out.println(propReader.getUdId());
-            System.out.println(propReader.getChromeDriverPath());
+//            ReadFromExcel readFromExcel = new ReadFromExcel();
+//            readFromExcel.ReadExcel();
 
-            webDriver = new WebDr();
+            webDriver = WebDr.getInstance();
             webDriver.CreateWebDriver("chrome");
-            webDriver.OpenUrl(propReader.getUrl());
-            webDriver.CloseWebDriver();
 
+            KWOpenBrowser.OpenBrowser(propReader.getUrl());
+
+            long startTime = System.currentTimeMillis();
+
+            KWSetText.SetText(CreateGAPO.FirstName,"Elangovan");
+            KWSetText.SetText(CreateGAPO.LastName,"Mani");
+            KWSetText.SetText(CreateGAPO.GmailAddress, "Jamessssbonddd0000007");
+            KWSetText.SetText(CreateGAPO.Password, "Infy@123");
+            KWSetText.SetText(CreateGAPO.ConfirmPassword,"Infy@123");
+            KWSetText.SetText(CreateGAPO.BirthDay, "18");
+            KWSetText.SetText(CreateGAPO.BirthYear, "1987");
+            KWSetText.SetText(CreateGAPO.PhoneNumber, "224-619-7026");
+            KWSetText.SetText(CreateGAPO.RecoveryMail, "elango87@gmail.com");
+
+            long endTime = System.currentTimeMillis();
+
+            System.out.println("Execution completed in " + (int) (endTime-startTime) + " milli-seconds");
+
+//            KWCloseBrowser.CloseBrowser();
         }
     }
 }

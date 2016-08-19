@@ -1,5 +1,7 @@
 package com.selappium.utility;
 
+import com.selappium.driver.Driver;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Properties;
@@ -17,18 +19,18 @@ public class PropertyReader {
     private static String deviceId;
     private static String udId;
     private static String chromeDriverPath;
+    private static PropertyReader propReader = null;
 
     public PropertyReader(String configFilePath) {
         filePath = configFilePath;
         ReadProperties();
     }
 
-    private static PropertyReader propReader = null;
+    public static PropertyReader getInstance() {
 
-    public static PropertyReader getInstance(){
-
-        if (propReader == null){
-            propReader = new PropertyReader(filePath);
+        if (propReader == null) {
+            propReader = new PropertyReader(Driver.configFile.getAbsolutePath());
+            ReadProperties();
         }
 
         return propReader;
@@ -43,8 +45,8 @@ public class PropertyReader {
             properties.load(reader);
 
             url = properties.getProperty("URL");
-            apkPath = properties.getProperty("APKPATH");
-            ipaPath = properties.getProperty("IPAPATH");
+            apkPath = parseAbsolutePath(properties.getProperty("APKPATH"));
+            ipaPath = parseAbsolutePath(properties.getProperty("IPAPATH"));
             deviceId = properties.getProperty("DEVICEID");
             udId = properties.getProperty("UDID");
             chromeDriverPath = properties.getProperty("CHROMEDRIVERPATH");
@@ -54,6 +56,11 @@ public class PropertyReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static String parseAbsolutePath(String path) {
+        path = path.replace("/", "\\\\");
+        return path;
     }
 
     public String getUrl() {

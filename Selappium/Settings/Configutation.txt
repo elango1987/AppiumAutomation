@@ -4,7 +4,7 @@
 
 Browser Configuration
 ------------------------------------------------------------------------------------
-URL = https://www.google.com/
+URL = https://accounts.google.com/SignUp
 
 CHROMEDRIVERPATH = "/Users/ELANGO/IdeaProjects/AppiumAutomation/Selappium/External Files/chromedriver"
 
